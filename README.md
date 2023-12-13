@@ -1,2 +1,1 @@
-# docassemble-LLAW3302Communications
-Used to send out mailings to students
+Manages mailings to students.  Initially written as an alternative to using Mail Merge in Word as Docassemble gives more flexibility
