@@ -9,6 +9,7 @@ include:
   - constants.yml
   - commtools.yml
   - pa_driver.yml
+  - pa_questions.yml
 ---
 mandatory: True
 question: LLAW3302 Student Communications

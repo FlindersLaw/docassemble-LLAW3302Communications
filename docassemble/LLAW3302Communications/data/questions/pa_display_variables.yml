@@ -1,0 +1,6 @@
+# Code blocks to construct each display variable for the attachment
+---
+# Date of the letter - is today
+code: |
+  display_date = format_date(today(), "d MMMM YYYY")
+---

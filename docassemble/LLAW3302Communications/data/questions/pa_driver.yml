@@ -3,71 +3,29 @@
 code: |
   # Do something
   upload_spreadsheet
+  imported_data
+  selected_students
+  pa_finish
+
 
 
   # Finish with this
   pa_driver = True
 ---
-# This first screen introduces the app as well as uploads
-# the spreadsheet
-# The question title is the tool name
-question: ${commtools.item('place_alloc')}
-subquestion: |
-  This tool sends out placement allocation letters to 
-  students.  The tool works as follows:
+modules:
+  .pa_import_data
+---
+code: |
+  the_data = PAImportData(
+    file=upload_spreadsheet,
+    tab_name=ss_tab_name,
+    columns=ss_columns)
+  imported_data = the_data.process_data()
 
-  <ol>
-  <li>
-    First, you must upload a spreadsheet containing student
-    information.
-    <details>
-    <summary>
-      Spreadhseet Requirements
-    </summary>
-    <ul>
-      <li>The spreadsheet must be an Excel spreadsheet and 
-      must be saved with a <strong><code>.xlsx</code></strong>
-      extension.
-      </li>
-      <li>
-        The spreadsheet must contain a tab with the name
-        <strong>${ss_tab_name}</strong>.
-        <p><strong>Note:</strong> If the spreadsheet only
-        contains one tab, then that tab can have any name.</p>
-      </li>
-      <li>
-        The spreadsheet must contain these columns:
-        <strong>${ss_columns.comma_and_list()}.</strong>
-        <p>Here is an extract from an example spreadsheet:</p>
-        [FILE pa_driver_ss_example.png, 100%]
-      </li>
-    </ul>
-    </details>
-    <p>After uploading, the spreadsheet is validated against the requirements
-    listed here.</p>
-    <p><strong>Note:</strong>  You will not be allowed to proceed if your spreadsheet
-    fails validation.</p>
-  </li>
-  <li>
-    Once the spreadsheet is validated you are presented with a list
-    of students.  You may select or deselct the students to whom
-    you wish to send the placement letters.
-  </li>
-  <li>
-    You are then asked to complete information to include in the 
-    placement letter, such as key dates and times and 
-    key contact details
-  </li>
-  <li>
-    You will then be presented with an example letter 
-    to send and buttons to indicate you approve (or otherwise)
-    to send the placement letters
-  </li>
-  <li>
-    Once you approve, emails with placement letters attached
-    are sent to each student.
-  </li>
-  </ol>
-fields:
-  - Upload your spreadsheet: upload_spreadsheet
+  xl_test = True
+---
+event: pa_finish
+question: Finished
+subquestion: |
+  `${imported_data}`
 ---

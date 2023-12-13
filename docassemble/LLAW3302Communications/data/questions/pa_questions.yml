@@ -1,0 +1,116 @@
+# This first screen introduces the app as well as uploads
+# the spreadsheet
+# The question title is the tool name
+question: ${commtools.item('place_alloc')}
+subquestion: |
+  This tool sends out placement allocation letters to 
+  students.  The tool works as follows:
+
+  <ol>
+  <li>
+    First, you must upload a spreadsheet containing student
+    information.
+    <details>
+    <summary>
+      Spreadhseet Requirements
+    </summary>
+    <ul>
+      <li>The spreadsheet must be an Excel spreadsheet and 
+      must be saved with a <strong><code>.xlsx</code></strong>
+      extension.
+      </li>
+      <li>
+        The spreadsheet must contain a tab with the name
+        <strong>${ss_tab_name}</strong>.
+        <p><strong>Note:</strong> If the spreadsheet only
+        contains one tab, then that tab can have any name.</p>
+      </li>
+      <li>
+        The spreadsheet must contain these columns:
+        <strong>${ss_columns.comma_and_list()}.</strong>
+        <p>Here is an extract from an example spreadsheet:</p>
+        [FILE pa_driver_ss_example.png, 100%]
+      </li>
+    </ul>
+    </details>
+    <p>After uploading, the spreadsheet is validated against the requirements
+    listed here.</p>
+    <p><strong>Note:</strong>  You will not be allowed to proceed if your spreadsheet
+    fails validation.</p>
+  </li>
+  <li>
+    Once the spreadsheet is validated you are presented with a list
+    of students.  You may select or deselct the students to whom
+    you wish to send the placement letters.
+  </li>
+  <li>
+    You are then asked to complete information to include in the 
+    placement letter, such as key dates and times and 
+    key contact details
+  </li>
+  <li>
+    You will then be presented with an example letter 
+    to send and buttons to indicate you approve (or otherwise)
+    to send the placement letters
+  </li>
+  <li>
+    Once you approve, emails with placement letters attached
+    are sent to each student.
+  </li>
+  </ol>
+  <hr>
+  **Upload your spreadsheet here:**
+fields:
+  - no label: upload_spreadsheet
+    datatype: file
+    file css class: None
+---
+# This question displays the list of users to send emails to
+# By default this screen selects all users
+question: Select Students
+subquestion: |
+  By default all students are selected.  Please unselect any students
+  to whom you **do not** wish to send placement letters
+fields:
+  - no label: selected_students
+    datatype: checkboxes
+    choices:
+      code: |
+        student_list
+---
+# This creates student_list.  The key for each record is the 
+# student's FAN.  The student's name is displayed and 'default'
+# is set to True so the student is selected in the list
+code: |
+  student_list = []
+  for student in imported_data:
+    fan = student[ss_columns[0]]
+    name = "{} {}".format(student[ss_columns[1]], student[ss_columns[2]])
+    student_list.append({ fan : name, 'default' : True })
+---
+# This block asks for non-student related questions, such as start dates etc.
+# We use lots of default values here to make things easier to populate
+question: Additional Information
+subquestion: |
+  Please complete the following additional information
+fields:
+  - Confirmation Date: date_cfm
+    datatype: date
+  - General Induction Date: date_gi
+    datatype: date
+  - Monday of first week of placement: date_fp_day
+    datatype: date
+  - FLC admin email address: email_flc
+    datatype: email
+    default: admin.flc@flinders.edu.au
+  - Topic Co-ordinator's name: tc_name
+    default: Tania Leiman
+  - Topic Co-ordinator's email: email_tc
+    datatype: email
+    default: tania.leiman@flinders.edu.au
+  - Teaching staff name: ts_name
+    default: Mark Ferraretto
+  - Teaching staff email: email_ts
+    datatype: email
+    default: mark.ferraretto@flinders.edu.au
+---

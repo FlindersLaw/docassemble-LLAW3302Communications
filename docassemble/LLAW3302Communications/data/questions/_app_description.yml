@@ -41,3 +41,25 @@
 #   - SI location (default FLC)
 #   - First week of semester
 #   - 
+
+
+######
+# Document variables
+display_date - date of the letter - AGLC formatted
+display_student_name - student's first and last name
+display_student_fn - student's first name only
+display_fan - student's FAN
+dp_name - name of placement
+dp_day - student's allotted day for placement
+dp_start - start time of placement
+dp_end - end time of placement
+dp_cfm - confirmation date (time fixed at 5pm).  Display with name of day
+dp_email_flc - flc email - must be displayed as URL
+dp_email_tc - topic co-ordinator email - must be displayed as URL
+display_gi_date = general induction date.  Include the day.
+display_si_date - specific induction date - **need to format 'to be advised' properly
+  - should we exclude this paragraph if specific induction it TBA?
+display_fp_day - first day of placement.
+display_tc_name - topic co-ordinator's name
+display_ts_name - teaching staff name
+dp_email_ts - teaching staff email
