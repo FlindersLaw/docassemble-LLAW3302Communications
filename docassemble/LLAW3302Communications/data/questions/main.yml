@@ -1,43 +1,53 @@
-# How the program should run
-# 
-# Welcome screen
-# - This app does these things:
-#   - Sends allocation emails to students
-#   (that's it for now)
-#   (other things to come)
-#
-# Should present the options as a radio buttons and then continue
-#
-# Allocations mailings flow:
-# - first, user must upload spreadheet.  Explain the spreadsheet must be as follows:
-#   - Must be an Excel spreadsheet save as a .xlsx file
-#   - Must contain either a single tab, or if it contains multiple tabs then it must
-#     contain a tab called 'Student Allocations Mailing DB'
-#   - The single tab (or the SAMDB tab) must be formatted as follows:
-#     (lay out the columns)
-#     (include a screenshot of an example?)
-#     (include an example spreadsheeet template to complete (or to past into an
-#     existing spreadsheet))
-#
-# - Then we use Pandas to process the xlsx, find the tab and validate it.
-#   - validation is:
-#     - check for tab (if not single tab)
-#     - check columns named correctly
-#     - check there is at least one data row
-#   - if validation fails we should return the user to the upload screen so they
-#     can have another go.
-#
-# - Once we have a spreadsheet uploaded we need to verify the data to put into the form
-#   letter.  This data is:
-#   - confirmation date
-#   - reply email addresses (one for FLC, one for the TC)
-#   - cc: email addresses 
-#   - Date of general induction
-#   - (optional) link to Induction module in Canvas
-#   - GI location (default FLC)
-#   - GI start time (default 8:45am)
-#   - SI start date (from spreadsheet)
-#   - SI start time (default: 8:45am)
-#   - SI location (default FLC)
-#   - First week of semester
-#   - 
+---
+# Files are included in this order:
+# - constants.yml goes first
+# - other files reuired to be included in special order 
+#   go next
+# - remainder of files to be included are included in 
+#   alphabetical order
+include:
+  - constants.yml
+  - commtools.yml
+  - pa_driver.yml
+---
+mandatory: True
+question: LLAW3302 Student Communications
+subquestion: |
+  This application was written to assist with the management of
+  student communications.  Select the communication tool you wish
+  to use below:
+fields:
+  - no label: tool_choice
+    input type: radio
+    choices:
+      code: |
+        commtools
+---
+# Drives the app
+mandatory: True
+code: |
+  if tool_choice == 'place_alloc':
+    # Logic for placement allocations goes here
+    pa_driver
+  else:
+    exit_tool_choice_error
+---
+event: exit_tool_choice_error
+question: Invalid tool chosen
+subquestion: |
+  Invalid or unsupported tool selected.
+
+  <table>
+  <tr>
+    <td>Tool Selected:</td>
+    <td><strong>"${commtools.item(tool_choice)}"</strong></td>
+  </tr>
+  <tr>
+    <td>Tool key:</td>
+    <td><strong>"${tool_choice}"</strong></td>
+  </tr>
+  </table>
+buttons:
+  - Exit: exit
+  - Try again: restart
+---

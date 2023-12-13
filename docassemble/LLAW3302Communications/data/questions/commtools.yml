@@ -1,0 +1,10 @@
+# Different communications tools available to 
+# the user are listed in this data block.
+#
+# As of time of writing we only have one!
+variable name: commtools
+use objects: True
+data:
+  place_alloc : Placement Allocations
+  pa2 : Invalid tool test
+---

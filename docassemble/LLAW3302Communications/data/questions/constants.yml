@@ -1,0 +1,20 @@
+# Define constants here
+---
+objects:
+  - ss_columns: DAList.using(there_are_any=True, auto_gather=False)
+---
+# Constants for pa_driver
+code: |
+  ss_tab_name = 'Student Allocations Mailing DB'
+
+  # Name the spreadsheet columns
+  ss_columns.clear()
+  ss_columns.append('FAN')
+  ss_columns.append('First Name')
+  ss_columns.append('Last Name')
+  ss_columns.append('Allocation')
+  ss_columns.append('Day')
+  ss_columns.append('Period')
+  ss_columns.append('Specific Induction Day')
+  ss_columns.gathered = True
+---
