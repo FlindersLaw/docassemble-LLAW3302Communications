@@ -18,3 +18,23 @@ code: |
   ss_columns.append('Specific Induction Day')
   ss_columns.gathered = True
 ---
+# Constants reprsenting keys for data to be displayed in the attachment
+code: |
+  d_date    = 'd_date'
+  d_st_n    = 'd_st_n'
+  d_st_fn   = 'd_st_fn'
+  d_fan     = 'd_fan'
+  d_gi_date = 'd_gi_date'
+  d_si_date = 'd_si_date'
+  d_fp_day  = 'd_fp_day'
+  d_tc_name = 'd_tc_name'
+  d_ts_name = 'd_ts_name'
+  dp_name   = 'dp_name'
+  dp_day    = 'dp_day'
+  dp_start  = 'dp_start'
+  dp_end    = 'dp_end'
+  dp_cfm    = 'dp_cfm'
+  dp_email_flc  = 'dp_email_flc'
+  dp_email_tc   = 'dp_email_tc'
+  dp_email_ts   = 'dp_email_ts'
+---

@@ -5,6 +5,7 @@ code: |
   upload_spreadsheet
   imported_data
   selected_students
+  letter_preview
   pa_finish
 
 
@@ -21,8 +22,6 @@ code: |
     tab_name=ss_tab_name,
     columns=ss_columns)
   imported_data = the_data.process_data()
-
-  xl_test = True
 ---
 event: pa_finish
 question: Finished

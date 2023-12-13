@@ -1,1 +1,9 @@
 #Store the attachment specifier here
+---
+attachment:
+  variable name: imported_data[i]['attachment']
+  filename: Placement_Letter
+  docx template file: LLAW3302_Placement_Template_TEST.docx
+  valid formats:
+    - pdf
+---

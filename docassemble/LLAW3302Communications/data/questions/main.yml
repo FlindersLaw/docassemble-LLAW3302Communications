@@ -8,6 +8,8 @@
 include:
   - constants.yml
   - commtools.yml
+  - pa_attachment.yml
+  - pa_display_variables.yml
   - pa_driver.yml
   - pa_questions.yml
 ---

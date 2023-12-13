@@ -114,3 +114,16 @@ fields:
     datatype: email
     default: mark.ferraretto@flinders.edu.au
 ---
+# Confirmation screen.  Present the user with the first attachment in the imported_data list
+# for review
+question: Preview Letter
+subquestion: |
+  Below you will find an example letter prepared for you to preview.  If you
+  are happy with the letter then press **Continue** and emails will be sent out
+  to all students.
+
+  If you are not satisfied use the **Back** button to review your answers.
+
+  [PDF](${imported_data[0]['attachment']})
+continue button field: letter_preview
+---

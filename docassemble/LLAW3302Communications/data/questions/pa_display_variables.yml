@@ -2,5 +2,9 @@
 ---
 # Date of the letter - is today
 code: |
-  display_date = format_date(today(), "d MMMM YYYY")
+  d_date = format_date(today(), "d MMMM YYYY")
+---
+# Student's name
+code: |
+  imported_data[i][d_st_n] = "{} {}".format(imported_data[i][ss_columns[1]], imported_data[i][ss_columns[2]])
 ---
