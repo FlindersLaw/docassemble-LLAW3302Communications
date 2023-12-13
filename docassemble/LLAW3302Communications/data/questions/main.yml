@@ -1,0 +1,43 @@
+# How the program should run
+# 
+# Welcome screen
+# - This app does these things:
+#   - Sends allocation emails to students
+#   (that's it for now)
+#   (other things to come)
+#
+# Should present the options as a radio buttons and then continue
+#
+# Allocations mailings flow:
+# - first, user must upload spreadheet.  Explain the spreadsheet must be as follows:
+#   - Must be an Excel spreadsheet save as a .xlsx file
+#   - Must contain either a single tab, or if it contains multiple tabs then it must
+#     contain a tab called 'Student Allocations Mailing DB'
+#   - The single tab (or the SAMDB tab) must be formatted as follows:
+#     (lay out the columns)
+#     (include a screenshot of an example?)
+#     (include an example spreadsheeet template to complete (or to past into an
+#     existing spreadsheet))
+#
+# - Then we use Pandas to process the xlsx, find the tab and validate it.
+#   - validation is:
+#     - check for tab (if not single tab)
+#     - check columns named correctly
+#     - check there is at least one data row
+#   - if validation fails we should return the user to the upload screen so they
+#     can have another go.
+#
+# - Once we have a spreadsheet uploaded we need to verify the data to put into the form
+#   letter.  This data is:
+#   - confirmation date
+#   - reply email addresses (one for FLC, one for the TC)
+#   - cc: email addresses 
+#   - Date of general induction
+#   - (optional) link to Induction module in Canvas
+#   - GI location (default FLC)
+#   - GI start time (default 8:45am)
+#   - SI start date (from spreadsheet)
+#   - SI start time (default: 8:45am)
+#   - SI location (default FLC)
+#   - First week of semester
+#   - 
